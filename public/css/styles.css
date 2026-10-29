@@ -1,0 +1,382 @@
+/* ── Tokens ── */
+:root {
+  --bg:            #0F1117;
+  --surface:       #1A1D27;
+  --border:        #2A2D3A;
+  --accent:        #3B82F6;
+  --accent-hover:  #2563EB;
+  --text:          #E8EAF0;
+  --muted:         #6B7280;
+  --error:         #EF4444;
+  --success:       #10B981;
+  --radius:        8px;
+  --font:          'Inter', sans-serif;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Auth layout ── */
+.auth-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-wrapper {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ── Tabs ── */
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 14px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-bottom 0.15s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab-btn.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.tab-btn:hover:not(.active) {
+  color: var(--text);
+}
+
+/* ── Forms ── */
+.auth-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form.hidden { display: none; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  padding: 10px 12px 10px 38px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input-wrapper input::placeholder { color: var(--muted); }
+
+.input-wrapper input:focus {
+  border-color: var(--accent);
+}
+
+/* ── Button ── */
+.btn-primary {
+  width: 100%;
+  padding: 11px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Messages ── */
+.form-message {
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+}
+
+.form-message.error {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: var(--error);
+}
+
+.form-message.success {
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: var(--success);
+}
+
+.hidden { display: none !important; }
+
+/* ── Footer ── */
+.auth-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ── Map layout ── */
+.map-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.app-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.app-header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.btn-logout {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-logout:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  width: 280px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-header h2 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-add:hover { background: var(--accent-hover); }
+
+.marker-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.marker-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s;
+  gap: 8px;
+}
+
+.marker-item:hover { background: var(--bg); }
+
+.marker-item.active { background: rgba(59,130,246,0.1); }
+
+.marker-item-info { flex: 1; min-width: 0; }
+
+.marker-item-label {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.marker-item-coords {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.btn-delete-marker {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.btn-delete-marker:hover { color: var(--error); }
+
+.sidebar-empty {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ── Map ── */
+#map {
+  flex: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 240px;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    z-index: 1000;
+  }
+
+  .app-content {
+    flex-direction: column;
+  }
+
+  #map {
+    flex: 1;
+    min-height: 0;
+  }
+}

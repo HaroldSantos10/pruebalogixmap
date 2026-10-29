@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LogixMap — Acceso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="auth-body">
+
+  <div class="auth-wrapper">
+
+    <div class="auth-brand">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span>LogixMap</span>
+    </div>
+
+    <div class="auth-card">
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">Iniciar sesión</button>
+        <button class="tab-btn" id="tab-register" onclick="switchTab('register')">Registrarse</button>
+      </div>
+
+      <!-- Login -->
+      <form id="form-login" class="auth-form" onsubmit="handleLogin(event)">
+        <div class="field">
+          <label for="login-email">Correo electrónico</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <input type="email" id="login-email" placeholder="correo@ejemplo.com" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="login-password">Contraseña</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="login-password" placeholder="Mínimo 8 caracteres" required />
+          </div>
+        </div>
+        <div id="login-error" class="form-message error hidden"></div>
+        <button type="submit" class="btn-primary" id="login-btn">
+          <span>Ingresar</span>
+        </button>
+      </form>
+
+      <!-- Register -->
+      <form id="form-register" class="auth-form hidden" onsubmit="handleRegister(event)">
+        <div class="field">
+          <label for="reg-email">Correo electrónico</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <input type="email" id="reg-email" placeholder="correo@ejemplo.com" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="reg-password">Contraseña</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="reg-password" placeholder="Mínimo 8 caracteres" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="reg-confirm">Confirmar contraseña</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="reg-confirm" placeholder="Repite tu contraseña" required />
+          </div>
+        </div>
+        <div id="reg-error" class="form-message error hidden"></div>
+        <div id="reg-success" class="form-message success hidden"></div>
+        <button type="submit" class="btn-primary" id="reg-btn">
+          <span>Crear cuenta</span>
+        </button>
+      </form>
+
+    </div>
+
+    <p class="auth-footer">LogixMap — Prueba técnica</p>
+
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -20,6 +20,13 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/api/auth', authRoutes);
 app.use('/api/markers', markerRoutes);
 
+// Endpoint para config pública del cliente
+app.get('/api/config', (req, res) => {
+  res.json({
+    stadiaKey: process.env.STADIA_API_KEY
+  });
+});
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
