@@ -7,33 +7,32 @@ const getMarkers = (req, res) => {
   res.json(userMarkers);
 };
 
-// Crear marcador
 const createMarker = (req, res) => {
-  const { lat, lng, label } = req.body;
+  const { lat, lng, label, color } = req.body;
 
   if (!lat || !lng) {
     return res.status(400).json({ message: 'lat y lng son requeridos' });
   }
 
-  const marker = new Marker(req.user.id, lat, lng, label);
+  const marker = new Marker(req.user.id, lat, lng, label, color);
   markers.push(marker);
 
   res.status(201).json(marker);
 };
 
-// Actualizar posición de marcador (drag)
 const updateMarker = (req, res) => {
   const { id } = req.params;
-  const { lat, lng, label } = req.body;
+  const { lat, lng, label, color } = req.body;
 
   const marker = markers.find(m => m.id === id && m.userId === req.user.id);
   if (!marker) {
     return res.status(404).json({ message: 'Marcador no encontrado' });
   }
 
-  if (lat) marker.lat = lat;
-  if (lng) marker.lng = lng;
-  if (label) marker.label = label;
+  if (lat !== undefined) marker.lat = lat;
+  if (lng !== undefined) marker.lng = lng;
+  if (label !== undefined) marker.label = label;
+  if (color !== undefined) marker.color = color;
   marker.updatedAt = new Date();
 
   res.json(marker);

@@ -380,3 +380,121 @@ body {
     min-height: 0;
   }
 }
+
+/* ── Tooltip del mapa ── */
+.map-tooltip {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-family: var(--font) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+.map-tooltip::before { display: none !important; }
+
+/* ── Contador ── */
+.marker-count {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+  display: block;
+}
+
+/* ── Color dot ── */
+.marker-color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.marker-color-dot input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+}
+
+/* ── Edición inline ── */
+.marker-item-label[contenteditable="true"] {
+  outline: none;
+  border-radius: 3px;
+  padding: 1px 4px;
+  margin: -1px -4px;
+  cursor: text;
+  transition: background 0.15s;
+}
+
+.marker-item-label[contenteditable="true"]:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.marker-item-label[contenteditable="true"]:focus {
+  background: rgba(59,130,246,0.1);
+}
+
+/* ── Confirmación de eliminación ── */
+.marker-item.deleting {
+  background: rgba(239,68,68,0.05);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: var(--radius);
+}
+
+.delete-confirm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.delete-confirm span {
+  font-size: 12px;
+  color: var(--error);
+}
+
+.delete-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-confirm-delete {
+  flex: 1;
+  padding: 5px;
+  background: var(--error);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font);
+  font-size: 12px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-confirm-delete:hover { opacity: 0.85; }
+
+.btn-cancel-delete {
+  flex: 1;
+  padding: 5px;
+  background: none;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--font);
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.btn-cancel-delete:hover { color: var(--text); }
