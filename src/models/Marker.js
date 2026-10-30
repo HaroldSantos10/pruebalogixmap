@@ -1,6 +1,8 @@
+const { randomUUID } = require('crypto');
+
 class Marker {
   constructor(userId, lat, lng, label = 'Marcador', color = '#3B82F6') {
-    this.id = require('uuid').v4();
+    this.id = randomUUID();
     this.userId = userId;
     this.lat = lat;
     this.lng = lng;
