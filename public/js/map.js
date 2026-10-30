@@ -13,13 +13,21 @@ async function initTiles() {
   try {
     const res = await fetch('/api/config');
     const { stadiaKey } = await res.json();
-    L.tileLayer(
-      `https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=${stadiaKey}`,
-      {
-        attribution: '© Stadia Maps © OpenMapTiles © OpenStreetMap contributors',
-        maxZoom: 20
-      }
-    ).addTo(map);
+
+    if (stadiaKey) {
+      L.tileLayer(
+        `https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=${stadiaKey}`,
+        {
+          attribution: '© Stadia Maps © OpenMapTiles © OpenStreetMap contributors',
+          maxZoom: 20
+        }
+      ).addTo(map);
+    } else {
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '© Esri © OpenStreetMap contributors',
+        maxZoom: 19
+      }).addTo(map);
+    }
   } catch (err) {
     console.error('Error cargando tiles:', err);
   }
